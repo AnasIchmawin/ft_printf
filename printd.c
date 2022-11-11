@@ -20,9 +20,7 @@ void printd(int d)
         printc('-');
     }
     else if (d < 10)
-    {
         printc(d);
-    }
     else 
     {
         printd(d / 10);
