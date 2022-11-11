@@ -43,6 +43,7 @@ int ft_printf(const char *str, ...)
         if(str[i] != '%')
         {
             write(1, &str[i], 1);
+            count++;
             i++;  
         }
         else
