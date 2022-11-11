@@ -10,4 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
+void printd(int d)
+{
+    if (d < 0)
+    {
+        d = -d;
+        printc('-');
+    }
+    else if (d < 10)
+    {
+        printc(d);
+    }
+    else 
+    {
+        printd(d / 10);
+        printd(d % 10);
+    }
+}
