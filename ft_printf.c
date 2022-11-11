@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void testnext(va_list arg, char *str, int *i)
+void testnext(va_list arg, char *str, int *count, int *i)
 {
     if (str[i] == '%')
     {
@@ -20,7 +20,7 @@ void testnext(va_list arg, char *str, int *i)
     }
     if (str[i] == 'c')
     {
-        printc(va_arg(arg, int));
+        printc(va_arg(arg, int), &count);
         *i++;
     }
     // if (str[i] == 's')
@@ -34,6 +34,7 @@ int ft_printf(const char *str, ...)
 {
     va_list arg;
     int     i;
+    int     count;
 
     i = 0;
     va_start(arg, str);
@@ -47,7 +48,7 @@ int ft_printf(const char *str, ...)
         else
         {
             i++;
-            testnext(arg,str,&i);
+            testnext(arg,str,&count,&i);
         }
     }
     va_end(arg);

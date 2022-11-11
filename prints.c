@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-void prints(char *str)
+void prints(char *str, int *count)
 {
     int i;
 
     i = 0;
     while (str[i])
     {
-        printc(str[i]);
+        printc(str[i], &count);
         i++;
     }
 }

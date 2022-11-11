@@ -18,7 +18,7 @@
 #include <stdarg.h>
 
 int ft_printf(const char *str, ...);
-void printc(char c);
-void printd(int d);
-void prints(char *str)
+void printc(char c, int *count);
+void printd(int d, int *count);
+void prints(char *str, int *count);
 #endif

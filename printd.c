@@ -12,18 +12,18 @@
 
 #include "ft_printf.h"
 
-void printd(int d)
+void printd(int d, int *count)
 {
     if (d < 0)
     {
         d = -d;
-        printc('-');
+        printc('-', &count);
     }
     else if (d < 10)
-        printc(d);
+        printc(d, &count);
     else 
     {
-        printd(d / 10);
-        printd(d % 10);
+        printd(d / 10, &count);
+        printd(d % 10, &count);
     }
 }
