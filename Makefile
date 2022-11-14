@@ -14,31 +14,24 @@ CC = cc
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -werror
+FLAGS = -Wall -Wextra -Werror
 
-SRCS =	ft_printf.c /
-		printc.c	/
-		printd.c	/
-		printi.c 	/
-		printp.c 	/
-		prints.c 	/
-		printu.c 	/
-		printx.c
+SRCS =	ft_printf.c printc.c printd.c prints.c 	
 	
 OBJS = $(SRCS:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) = $(OBJS) ft_printf.h
-	ar -rcs $@ $^
+$(NAME) : $(OBJS) ft_printf.h
+	ar rcs $(NAME) $(OBJS)
 
-%.o : %.c ft_printf.h
+%.o: %.c ft_printf.h
 	$(CC) $(FLAGS) -c $< -o $@
 
-clean :	
+clean:	
 	rm -rf $(OBJS)
 
-fclean : clean $(NAME)
+fclean: clean
 	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all

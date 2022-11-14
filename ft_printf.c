@@ -13,21 +13,31 @@
 
 void testnext(va_list arg, char *str, int *count, int *i)
 {
-    if (str[i] == '%')
+    if (str[*i] == '%')
     {
         write(1, "%", 1);
         *i++;
     }
-    if (str[i] == 'c')
+    if (str[*i] == 'c')
     {
-        printc(va_arg(arg, int), &count);
+        printc(va_arg(arg, int), count);
         *i++;
     }
-    // if (str[i] == 's')
-    // {
-    //     prints();
-    //     *i++;
-    // }
+    if (str[*i] == 'd' || str[*i] == 'i')
+    {
+        printd(va_arg(arg, int), count);
+        *i++;
+    }
+    if (str[*i] == 'u')
+    {
+        printd(va_arg(arg, unsigned int), count);
+        *i++;
+    }
+    if (str[*i] == 's')
+    {
+        prints(va_arg(arg, char *), count);
+        *i++;
+    }
 }
 
 int ft_printf(const char *str, ...)
@@ -49,7 +59,7 @@ int ft_printf(const char *str, ...)
         else
         {
             i++;
-            testnext(arg,str,&count,&i);
+            testnext(arg,(char *)str,&count,&i);
         }
     }
     va_end(arg);
