@@ -12,14 +12,19 @@
 
 #include "ft_printf.h"
 
-void prints(char *str, int *count)
+void prints(const char *str, int *count)
 {
     int i;
 
     i = 0;
+    if (str == NULL)
+    {
+        prints("(null)",count);
+        return ;
+    }
     while (str[i])
     {
-        printc(str[i], &count);
+        printc(str[i], count);
         i++;
     }
 }

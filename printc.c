@@ -15,5 +15,5 @@
 void printc(char c, int *count)
 {
     write(1, &c, 1);
-    *count++;
+    (*count)++;
 }

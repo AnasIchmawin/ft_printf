@@ -11,3 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void printu(unsigned int n, int *count)
+{
+    if (n < 10)
+        printc(n + 48, count);
+    else 
+    {
+        printd(n / 10, count);
+        printd(n % 10, count);
+    }
+}

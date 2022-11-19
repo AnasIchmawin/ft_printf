@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void printp(void *d, int *count)
+{
+    prints("0x",count);
+    printx((unsigned int)d,count,'x');
+}

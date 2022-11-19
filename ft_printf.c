@@ -11,33 +11,22 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void testnext(va_list arg, char *str, int *count, int *i)
+void testnext(va_list arg, char str, int *count)
 {
-    if (str[*i] == '%')
-    {
-        write(1, "%", 1);
-        *i++;
-    }
-    if (str[*i] == 'c')
-    {
+    if (str == '%')
+        printc('%',count);
+    if (str == 'c')
         printc(va_arg(arg, int), count);
-        *i++;
-    }
-    if (str[*i] == 'd' || str[*i] == 'i')
-    {
+    if (str == 'd' || str == 'i')
         printd(va_arg(arg, int), count);
-        *i++;
-    }
-    if (str[*i] == 'u')
-    {
-        printd(va_arg(arg, unsigned int), count);
-        *i++;
-    }
-    if (str[*i] == 's')
-    {
+    if (str == 'u')
+        printu(va_arg(arg, unsigned int), count);
+    if (str == 's')
         prints(va_arg(arg, char *), count);
-        *i++;
-    }
+    if (str == 'x' || str == 'X')
+        printx(va_arg(arg, int), count, str);
+    if (str == 'p')
+        printp(va_arg(arg, void *),count);
 }
 
 int ft_printf(const char *str, ...)
@@ -47,6 +36,7 @@ int ft_printf(const char *str, ...)
     int     count;
 
     i = 0;
+    count = 0;
     va_start(arg, str);
     while (str[i])
     {
@@ -54,18 +44,20 @@ int ft_printf(const char *str, ...)
         {
             write(1, &str[i], 1);
             count++;
-            i++;  
         }
         else
         {
             i++;
-            testnext(arg,(char *)str,&count,&i);
+            testnext(arg,str[i],&count);
         }
+        i++;
     }
     va_end(arg);
-    return 0;
+    return count;
 }
 // int main()
 // {
-//     ft_printf("%s anas%cichmawin%c","My name",' ','|');
+    
+//     int i = ft_printf(" %x ", -1);
+//     printf("\n%p", &i);
 // }
