@@ -6,7 +6,7 @@
 /*   By: aichmawi <aichmawi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:29:03 by aichmawi          #+#    #+#             */
-/*   Updated: 2022/11/07 17:29:05 by aichmawi         ###   ########.fr       */
+/*   Updated: 2022/11/20 17:02:32 by aichmawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	hex(unsigned long d, int *count)
 {
 	if (d < 10)
 		printd (d, count);
-	else if(d < 16)
+	else if (d < 16)
 		printc(d + 87, count);
 	else
 	{
@@ -25,8 +25,8 @@ void	hex(unsigned long d, int *count)
 	}
 }
 
-void printp(void *d, int *count)
+void	printp(void *d, int *count)
 {
-    prints("0x",count);
-    hex((unsigned long)d,count);
+	prints("0x", count);
+	hex((unsigned long)d, count);
 }
