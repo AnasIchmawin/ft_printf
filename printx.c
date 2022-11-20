@@ -14,11 +14,6 @@
 
 void	printx(unsigned int d, int *count, char c)
 {
-	if (d < 0)
-	{
-		d = -d;
-		printc ('-', count);
-	}
 	if (d < 10)
 		printd (d, count);
 	else if(d < 16)

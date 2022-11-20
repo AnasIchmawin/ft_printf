@@ -12,8 +12,21 @@
 
 #include "ft_printf.h"
 
+void	hex(unsigned long d, int *count)
+{
+	if (d < 10)
+		printd (d, count);
+	else if(d < 16)
+		printc(d + 87, count);
+	else
+	{
+		hex(d / 16, count);
+		hex(d % 16, count);
+	}
+}
+
 void printp(void *d, int *count)
 {
     prints("0x",count);
-    printx((unsigned int)d,count,'x');
+    hex((unsigned long)d,count);
 }
