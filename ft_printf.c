@@ -42,13 +42,20 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] != '%')
 		{
-			write(1, &str[i], 1);
-			count++;
+			if (write(1, &str[i], 1) < 0)
+			{	
+				count=-1;
+				break;
+			}
+			else
+				count++;
 		}
 		else
 		{
 			i++;
 			testnext (arg, str[i], &count);
+			if(count < 0)
+				break;
 		}
 		i++;
 	}
@@ -57,5 +64,6 @@ int	ft_printf(const char *str, ...)
 }
 // int main()
 // {
-// 	printf("cspdiuxX%");
+// 	close(1);
+// 	assert(ft_printf("sdzhbdfz")==-1);
 // }
