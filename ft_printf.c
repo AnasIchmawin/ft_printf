@@ -6,7 +6,7 @@
 /*   By: aichmawi <aichmawi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:27:35 by aichmawi          #+#    #+#             */
-/*   Updated: 2022/11/20 14:25:16 by aichmawi         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:27:44 by aichmawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -43,9 +43,9 @@ int	ft_printf(const char *str, ...)
 		if (str[i] != '%')
 		{
 			if (write(1, &str[i], 1) < 0)
-			{	
-				count=-1;
-				break;
+			{
+				count = -1;
+				break ;
 			}
 			else
 				count++;
@@ -54,16 +54,23 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			testnext (arg, str[i], &count);
-			if(count < 0)
-				break;
+			if (count < 0)
+				break ;
 		}
 		i++;
 	}
 	va_end(arg);
 	return (count);
 }
+
 // int main()
 // {
 // 	close(1);
 // 	assert(ft_printf("sdzhbdfz")==-1);
+// }
+// int main()
+// {
+// 	char *a = "anas";
+// 	ft_printf("%d\n",(unsigned long)a);
+// 	ft_printf("%p",a);
 // }

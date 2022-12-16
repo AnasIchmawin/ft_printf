@@ -6,7 +6,7 @@
 /*   By: aichmawi <aichmawi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:28:36 by aichmawi          #+#    #+#             */
-/*   Updated: 2022/11/20 14:54:41 by aichmawi         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:29:24 by aichmawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	printc(char c, int *count)
 {
 	if (write(1, &c, 1) < 0)
-		*count=-1;
+		*count = -1;
 	else
 		(*count)++;
 }

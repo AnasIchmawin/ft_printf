@@ -15,7 +15,7 @@
 void	hex(unsigned long d, int *count)
 {
 	if (d < 10)
-		printd (d, count);
+		printd(d, count);
 	else if (d < 16)
 		printc(d + 87, count);
 	else
