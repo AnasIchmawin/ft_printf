@@ -42,20 +42,13 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] != '%')
 		{
-			if (write(1, &str[i], 1) < 0)
-			{
-				count = -1;
-				break ;
-			}
-			else
-				count++;
+			write(1, &str[i], 1);
+			count++;
 		}
 		else
 		{
 			i++;
 			testnext (arg, str[i], &count);
-			if (count < 0)
-				break ;
 		}
 		i++;
 	}
@@ -70,7 +63,6 @@ int	ft_printf(const char *str, ...)
 // }
 // int main()
 // {
-// 	char *a = "anas";
-// 	ft_printf("%d\n",(unsigned long)a);
-// 	ft_printf("%p",a);
+// 	ft_printf("%d\n",2147483648);
+// 	//printf("%c",a);
 // }

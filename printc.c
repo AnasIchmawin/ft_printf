@@ -14,8 +14,6 @@
 
 void	printc(char c, int *count)
 {
-	if (write(1, &c, 1) < 0)
-		*count = -1;
-	else
-		(*count)++;
+	write(1, &c, 1);
+	(*count)++;
 }
