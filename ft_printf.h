@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 int		ft_printf(const char *str, ...);
 void	printc(char c, int *count);
